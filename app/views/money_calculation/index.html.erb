@@ -1,0 +1,21 @@
+<%- model_class = MoneyCalculation -%>
+
+<table >
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @moneycalculation.each do |moneycalculation| %>
+      <tr>
+         <td><%= moneycalculation.id %></td>
+        <td><%= moneycalculation.name %></td>
+        <td>rate : <%= rating_for moneycalculation, "moneycalculation" %></td>
+        <td>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

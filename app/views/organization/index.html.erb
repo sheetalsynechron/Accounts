@@ -1,0 +1,25 @@
+<h1>Organizations</h1>
+<p><%= link_to "sign_out", destroy_user_session_path %></p>
+<%- model_class = Organization -%>
+
+<table >
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @organizations.each do |organization| %>
+      <tr>
+         <td><%= organization.id %></td>
+        <td><%= organization.name %></td>
+        <td>rate : <%= rating_for organization, "organization" %></td>
+        <td>
+          <%= link_to t('Donate'),
+                      organization_show_path(:organization_id => organization.id), :class => 'btn btn-mini' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

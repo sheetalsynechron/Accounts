@@ -1,0 +1,23 @@
+
+<%= form_tag( {:controller=>"organization", :action=>"calculate_and_save"},:id => 'elm_id',:method => :get) do %>
+<table >
+  <tbody>
+<%= label(:amount, "Donate:") %>
+<%= text_field_tag :calculation_amount, params[:calculation_amount],:class => "validate[required,custom[integer],min[0]] text-input]", :autofocus => true %>
+     <% @organization.each do |organization| %>
+      <tr>    
+        <% @organization_id = organization.id %>
+          <% @amount = organization.amount %>   
+          <% @organization_name = organization.name %>   
+      </tr>  
+      </tr>
+    <% end %>
+     <%= hidden_field_tag :organization_id, @organization_id %>
+      <%= hidden_field_tag :organization_name, @organization_name %>
+       <%= hidden_field_tag :amount, @amount %>
+  </tbody>
+</table>
+ <%= submit_tag "Donate", :name => nil %>
+<%= link_to t('Cancel'),
+                      organization_index_path(), :class => 'btn btn-mini' %>
+<% end %>

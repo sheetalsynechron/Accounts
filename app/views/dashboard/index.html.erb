@@ -1,0 +1,37 @@
+<script src="highcharts.js"></script>
+<script src="exporting.js"></script>
+<script type="text/javascript" charset="utf-8">
+	$(function(){
+        new Highcharts.Chart({
+            chart:{
+	                renderTo: "orders_chart" ,
+                    defaultSeriesType: 'column'
+                 },
+            title:{
+                    text:"Organization Amount"
+                 },
+            xAxis: {
+                    categories: [<% Organization.select(:name).each do|n| %>
+	                '<%= n.name  %>',
+                    <%end%>]
+                    },
+            plotOptions: {
+                    series: {
+	                         }
+    	             },
+            yAxis:{
+                    title:{
+                    text: "Amount"
+                     }
+                 },
+            series: [{
+        	        data:  [<% Organization.select(:amount).each do|n| %>
+                    <%= n.amount  %>,
+                    <%end%>]  ,
+                     name: 'Orgnization Amount'
+               }]
+        });
+    });
+</script>
+
+<div id="orders_chart"></div>
